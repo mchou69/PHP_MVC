@@ -1,0 +1,27 @@
+#--------------------------------------------------
+# Répertoire : /articles/
+#--------------------------------------------------
+# Le serveur doit suivre les liens symboliques :
+Options +FollowSymlinks
+
+# Activation du module de réécriture d'URL :
+RewriteEngine on
+
+#--------------------------------------------------
+# Règles de réécriture d'URL :
+#--------------------------------------------------
+
+RewriteRule ^index.html$  /mvc/index.php [L]
+
+RewriteRule ^([a-z]+)$  /mvc/?c=$1 [L]
+RewriteRule ^([a-z]+)/$  /mvc/?c=$1 [L]
+
+
+RewriteRule ^([a-z]+)/([a-z]+)$  /mvc/?c=$1&a=$2 [L]
+RewriteRule ^([a-z]+)/([a-z]+)/$  /mvc/?c=$1&a=$2 [L]
+
+#--------------------------------------------------
+# static (css, js,..) :
+#--------------------------------------------------
+RewriteRule ^static/([a-z\.]+).css$  /mvc/assets/css/$1.css [L]
+RewriteRule ^static/([a-z]+).js$  /mvc/assets/js/$1.js [L]
